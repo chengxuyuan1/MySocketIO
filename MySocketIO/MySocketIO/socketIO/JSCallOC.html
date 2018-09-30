@@ -3,41 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>ffff</title>
-    <script src="socket.io.js"></script>
-    <script>
-        //socketConsole('开始连接');
-        //socketConsole('io.connect');
-        var socket;
-        //IOconnect('http://103.231.167.85:9081');
-        function  IOconnect(url){
-            //'http://103.231.167.85:9081'
-            socket = io.connect(url);
-            socket.on('connect',function(data) {
-                      socketConsole('客户端连接服务器');
-                      socketConsole('connect');
-                      });
-                      
-                      socket.on('disconnect',function() {
-                                socketConsole('连接已关闭');
-                                socketConsole('disconnect');
-                                });
-        }
-
-        function socketOn(str){
-            socket.on(str, (data) => {
-            socketConsole('接收到数据');
-            socketResult(data);
-            });
-        }
     
-       
-        function SocketIOEmit(obj1,obj2){
-        socket.emit(obj1,obj2);
-        return "emit: "+obj1+obj2
-        }
-    </script>
 </head>
+<script src="socket.io.js"></script>
+<script>
+    //socketConsole('开始连接');
+    //socketConsole('io.connect');
+    function  onload(){
+        //do something
+        native.TestOneParameter('jsexlo-----');
+    }
 
+    var socket;
+    //IOconnect('http://103.231.167.85:9081');
+    function  IOconnect(url){
+        //'http://103.231.167.85:9081'
+        socket = io.connect(url);
+        socket.on('connect',function(data) {
+                  socketConsole('客户端连接服务器');
+                  socketConsole('connect');
+                  });
+                  
+                  socket.on('disconnect',function() {
+                            socketConsole('连接已关闭');
+                            socketConsole('disconnect');
+                            });
+    }
+
+function socketOn(str){
+    socket.on(str, (data) => {
+              socketConsole('接收到数据');
+              socketResult(data);
+              });
+}
+
+
+function SocketIOEmit(obj1,obj2){
+    socket.emit(obj1,obj2);
+    return "emit: "+obj1+obj2
+}
+</script>
 <body>
     
 </body>

@@ -36,6 +36,7 @@ NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path
     
     // 以1
     self.context[@"native"] = self;
+    [self.context evaluateScript:@"onload()"];
     __block typeof(self) weakSelf = self;
     // 以 block 形式关联 JavaScript function
     
@@ -94,4 +95,12 @@ NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path
     JSValue *result = [function callWithArguments:arr];
     NSLog(@"%@",result.toString);
 }
+-(void)TestOneParameter:(NSString *)message{
+    NSLog(@"TestOneParameter:%@",message);
+}
+- (void)nativeCallHandleWithType:(NSString *)nativeType parameter:(NSString *)parameter jsType:(NSString *)jsType {
+    NSLog(@"callHandle-------");
+}
+
+
 @end

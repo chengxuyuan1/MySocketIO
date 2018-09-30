@@ -10,7 +10,12 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 NS_ASSUME_NONNULL_BEGIN
 typedef void (^SocketIOBlock)(id data);
-@interface SockeIOtView : UIView<UIWebViewDelegate>
+@protocol TestJSObjectProtocol <JSExport>
+-(void)TestOneParameter:(NSString *)message;
+JSExportAs(nativeCall, - (void)nativeCallHandleWithType:(NSString *)nativeType parameter:(NSString *)parameter jsType:(NSString *)jstype);
+@end
+
+@interface SockeIOtView : UIView<UIWebViewDelegate,TestJSObjectProtocol>
 @property (nonatomic,strong) UIWebView *webView;
 @property (strong, nonatomic) JSContext *context;
 @property (nonatomic,copy) SocketIOBlock block;
