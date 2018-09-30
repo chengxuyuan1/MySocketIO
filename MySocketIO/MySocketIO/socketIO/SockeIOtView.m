@@ -65,6 +65,11 @@ NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path
             weakSelf.dataBlock(data);
         }
     };
+    self.context[@"logout"] =
+    ^(id data)
+    {
+        NSLog(@"logout");
+    };
 }
 -(NSString *)jsonWithArr:(NSArray *)arr{
     NSError *error = nil;
